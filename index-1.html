@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STELLA — 評価スタジオ | 声で証明せよ</title>
+<!-- SEO Meta Tags -->
+<meta name="description" content="STELLA（ステラ）は、声・話術・存在感を実力で競い合うDiscord評価スタジオです。完全実力主義の階級制度で、あなたの声が価値になる。">
+<meta name="keywords" content="STELLA,ステラ,Discord,評価サーバー,VC,ボイスチャット,評価スタジオ,階級,声,話術">
+<meta name="robots" content="index, follow">
+<meta name="author" content="STELLA Evaluation Studio">
+<meta property="og:title" content="STELLA — 評価スタジオ | 声で証明せよ">
+<meta property="og:description" content="声・話術・存在感を競い合う、完全実力主義のDiscord評価スタジオ。候補生からスターへ、実力がそのまま立場になる。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ashina814.github.io/Stella-/">
+<meta property="og:image" content="https://ashina814.github.io/Stella-/stella_logo.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STELLA — 評価スタジオ">
+<meta name="twitter:description" content="声・話術・存在感を競い合う、完全実力主義のDiscord評価スタジオ。">
+<meta name="twitter:image" content="https://ashina814.github.io/Stella-/stella_logo.jpg">
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "STELLA",
+  "alternateName": "ステラ",
+  "description": "声・話術・存在感を競い合う完全実力主義のDiscord評価スタジオ",
+  "url": "https://ashina814.github.io/Stella-/",
+  "logo": "https://ashina814.github.io/Stella-/stella_logo.jpg",
+  "sameAs": ["https://discord.gg/phMRjaQh3"]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500&family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --gold-dim: #7a5f3a;
+    --crimson: #7a1020;
+    --bg: #060608;
+    --bg2: #0d0a0b;
+    --bg3: #131010;
+    --text: #e8e0d0;
+    --text-dim: #8a8070;
+    --border: rgba(201, 169, 110, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ─── Header ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .join-btn {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 0.6rem 1.6rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  .join-btn:hover { background: var(--gold); color: var(--bg); }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-radial {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(201,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-line {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 100;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+
+  .hero-title em { font-style: italic; color: var(--gold); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  .hero-cta a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 1rem 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  .hero-cta a:hover { background: var(--gold-light); letter-spacing: 0.45em; }
+
+  /* ─── Divider ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    margin: 4rem 0;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .divider-icon {
+    color: var(--gold-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+
+  /* ─── Section ─── */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 100;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-dim);
+    max-width: 640px;
+  }
+
+  /* ─── About STELLA ─── */
+  .about-text {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    line-height: 2.2;
+    color: var(--text-dim);
+    max-width: 680px;
+  }
+  .about-text .catch {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .about-text .catch em { color: var(--gold); font-style: normal; }
+
+  .about-tags {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .about-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 0.35rem 0.9rem;
+  }
+
+  /* ─── What is evaluation server ─── */
+  .eval-box {
+    margin-top: 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .eval-box::before {
+    content: '🎭';
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    font-size: 2.5rem;
+    opacity: 0.15;
+  }
+  .eval-box-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .eval-box-body {
+    font-size: 0.92rem;
+    line-height: 2.1;
+    color: var(--text-dim);
+  }
+  .eval-box-body strong { color: var(--text); font-weight: 400; }
+  .eval-highlight {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-left: 2px solid var(--gold-dim);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── Briefing / 説明会 ─── */
+  .briefing-box {
+    margin-top: 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+  }
+  .briefing-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.8rem 2.5rem;
+    background: var(--bg2);
+    transition: background 0.3s;
+  }
+  .briefing-item:hover { background: var(--bg3); }
+  .briefing-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    width: 2rem;
+    text-align: center;
+  }
+  .briefing-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .briefing-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .briefing-desc strong { color: var(--text); font-weight: 400; }
+  .briefing-desc .note {
+    font-size: 0.75rem;
+    color: #c08080;
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── Ranks ─── */
+  .ranks {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+  .rank-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    padding: 1.8rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+    transition: background 0.3s;
+  }
+  .rank-item:last-child { border-bottom: none; }
+  .rank-item:hover { background: var(--bg3); }
+  .rank-path {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .rank-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; }
+  .rank-badge { text-align: right; }
+  .badge {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid;
+  }
+  .badge-up { color: var(--gold); border-color: var(--gold-dim); }
+  .badge-skip { color: #a0c8a0; border-color: #4a7a4a; }
+
+  /* ─── Guide Warning ─── */
+  .guide-warning {
+    margin-top: 1.5rem;
+    border: 1px solid rgba(192, 128, 128, 0.3);
+    background: rgba(192, 128, 128, 0.04);
+    padding: 1.8rem 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .warn-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .warn-text { font-size: 0.88rem; color: var(--text-dim); line-height: 1.9; }
+  .warn-text em { font-style: italic; color: var(--gold); }
+
+  /* ─── Join ─── */
+  .join-section {
+    text-align: center;
+    padding: 8rem 2rem;
+    position: relative;
+  }
+  .join-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,169,110,0.04) 0%, transparent 70%);
+  }
+  .join-section .section-label,
+  .join-section .section-title,
+  .join-section .section-body {
+    position: relative;
+    margin: 0 auto;
+  }
+  .join-section .section-body { margin-bottom: 3rem; }
+  .join-section .section-title { margin-bottom: 1rem; }
+  .join-section .section-label { margin-bottom: 1rem; }
+
+  .join-link {
+    position: relative;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 1.1rem 3.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  .join-link:hover { background: var(--gold-light); letter-spacing: 0.45em; }
+
+  /* ─── Footer ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
+  .footer-note {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 100;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ─── Steps ─── */
+  .steps {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .step-item {
+    background: var(--bg2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .step-item:hover { background: var(--bg3); }
+  .step-item:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    top: 50%; right: -0.7rem;
+    transform: translateY(-50%);
+    color: var(--gold-dim);
+    font-size: 0.9rem;
+    z-index: 1;
+    background: var(--bg2);
+    padding: 0 0.2rem;
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold-dim);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .step-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.7; }
+
+  /* ─── Rules ─── */
+  .rules-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .rule-item {
+    background: var(--bg2);
+    padding: 1.6rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: background 0.3s;
+  }
+  .rule-item:hover { background: var(--bg3); }
+  .rule-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .rule-text { font-size: 0.83rem; color: var(--text-dim); line-height: 1.7; }
+  .rule-text strong { color: var(--text); font-weight: 400; display: block; margin-bottom: 0.2rem; }
+  .rule-item.bad { border-left: 2px solid rgba(192,128,128,0.4); }
+
+  /* ─── FAQ ─── */
+  .faq-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .faq-item {
+    background: var(--bg2);
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 2rem;
+    text-align: left;
+    gap: 1rem;
+    transition: background 0.3s;
+  }
+  .faq-q:hover { background: var(--bg3); }
+  .faq-q-text {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--text);
+  }
+  .faq-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold-dim);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    line-height: 1;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--gold); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 2rem;
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.9;
+  }
+  .faq-item.open .faq-a {
+    max-height: 400px;
+    padding: 0 2rem 1.6rem;
+  }
+
+  /* ─── Animations ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    header { padding: 1.2rem 1.5rem; }
+    header img { width: 70px !important; }
+    .rank-item { grid-template-columns: 1fr; }
+    .rank-badge { text-align: left; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .steps { grid-template-columns: 1fr; }
+    .step-item:not(:last-child)::after { display: none; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .briefing-item { padding: 1.4rem 1.5rem; }
+    .faq-q { padding: 1.2rem 1.5rem; }
+    .faq-a { padding: 0 1.5rem; }
+    .faq-item.open .faq-a { padding: 0 1.5rem 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo" style="display:flex;align-items:center;gap:0.8rem;"><img src="IMG_0667.jpg" alt="STELLA" loading="lazy" style="width:100px;"></div>
+  <a href="https://discord.gg/phMRjaQh3" class="join-btn" target="_blank">参加する</a>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-radial"></div>
+  <p class="hero-eyebrow">声で証明せよ</p>
+  <div style="margin-bottom:2rem; opacity:0; animation: fadeUp 1s ease 0.1s forwards;"><img src="IMG_0667.jpg" alt="STELLA" loading="lazy" style="width:180px;"></div>
+  <h1 class="hero-title">Stel<em>la</em></h1>
+  <p class="hero-subtitle">声と話術で、自らの価値を証明する場所。</p>
+  <div class="hero-cta">
+    <a href="https://discord.gg/phMRjaQh3" target="_blank">参加する — Join</a>
+  </div>
+  <div class="hero-line"></div>
+</div>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- STELLAとは -->
+<section class="reveal">
+  <p class="section-label">About</p>
+  <h2 class="section-title">STELLA<em>とは</em></h2>
+
+  <div class="about-text">
+    <span class="catch">
+      声と話術で自らの価値を証明する評価スタジオ。<br>
+      在籍期間・知名度・肩書き―― <em>一切関係ない。</em>
+    </span>
+    問われるのはただ一つ。<br>
+    今この瞬間、あなたがどれほど人を惹きつけるか。
+  </div>
+
+  <div class="about-tags">
+    <span class="about-tag">声の魅力</span>
+    <span class="about-tag">話術力</span>
+    <span class="about-tag">間の取り方</span>
+    <span class="about-tag">空気の支配力</span>
+  </div>
+
+  <div style="margin-top: 1.5rem; font-size: 0.88rem; color: var(--text-dim); line-height: 2;">
+    これらが <span style="color: var(--gold);">"市場価値"</span> となり、あなたの階級を決める。
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- 評価サーバーとは -->
+<section class="reveal">
+  <p class="section-label">Concept</p>
+  <h2 class="section-title">評価サーバー<em>とは？</em></h2>
+
+  <div class="eval-box">
+    <p class="eval-box-title">🎭 Evaluation Server</p>
+    <div class="eval-box-body">
+      VCイベントや日常の会話を通じて、<br>
+      参加者同士が互いの<strong>声・話術・存在感</strong>を評価員から評価してもらう場所。<br><br>
+      上手いと思えば票を入れ、階級が動く――
+    </div>
+    <div class="eval-highlight">
+      実力がそのまま立場になる仕組みです。
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- 説明会について -->
+<section class="reveal">
+  <p class="section-label">Orientation</p>
+  <h2 class="section-title">説明会<em>について</em></h2>
+
+  <div class="briefing-box">
+    <div class="briefing-item">
+      <div class="briefing-icon">📋</div>
+      <div>
+        <p class="briefing-title">説明会の目的</p>
+        <p class="briefing-desc">
+          参加前に <strong>STELLAのルール・評価の仕組み・階級制度</strong> をしっかり把握してもらうための場です。
+          説明会への参加は、正式メンバーとして活動するための必須ステップとなります。
+        </p>
+      </div>
+    </div>
+    <div class="briefing-item">
+      <div class="briefing-icon">🗓️</div>
+      <div>
+        <p class="briefing-title">開催スケジュール</p>
+        <p class="briefing-desc">
+          説明会は定期的に開催されます。<strong>日程はサーバー内のお知らせチャンネル</strong>でご確認ください。
+          <span class="note">※ 説明会を受けていない方は評価への参加が制限される場合があります。</span>
+        </p>
+      </div>
+    </div>
+    <div class="briefing-item">
+      <div class="briefing-icon">🎤</div>
+      <div>
+        <p class="briefing-title">説明会の内容</p>
+        <p class="briefing-desc">
+          評価の流れ / 階級制度の詳細 / ルールと禁止事項 / よくある質問への回答。<br>
+          <strong>疑問はその場で直接聞けます。</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- 昇格ルート -->
+<section class="reveal">
+  <p class="section-label">Rank System</p>
+  <h2 class="section-title">昇格<em>ルート</em></h2>
+  <p class="section-body">評価を重ね、実力で階級を勝ち取れ。昇格ルートは3つ存在する。</p>
+
+  <div class="ranks">
+    <div class="rank-item">
+      <div>
+        <p class="rank-path">候補生 → キャスト</p>
+        <p class="rank-desc">評価を勝ち取れ。まずはここから証明する。</p>
+      </div>
+      <div class="rank-badge"><span class="badge badge-up">Promotion</span></div>
+    </div>
+    <div class="rank-item">
+      <div>
+        <p class="rank-path">キャスト → スター</p>
+        <p class="rank-desc">一線を画す輝きを放て。群衆の中で選ばれる存在になれ。</p>
+      </div>
+      <div class="rank-badge"><span class="badge badge-up">Promotion</span></div>
+    </div>
+    <div class="rank-item">
+      <div>
+        <p class="rank-path">候補生 → スター</p>
+        <p class="rank-desc">突出した実力は飛び級あり。真の天才に与えられる特権。</p>
+      </div>
+      <div class="rank-badge"><span class="badge badge-skip">Skip Grade</span></div>
+    </div>
+  </div>
+
+  <div class="guide-warning" style="margin-top: 2rem;">
+    <div class="warn-icon">⚠️</div>
+    <div class="warn-text">
+      <strong style="color: var(--text); font-weight: 400;">降格も存在する。</strong><br>
+      成績不振・ルール違反は階級に関係なく降格。
+      STELLAは<em>完全実力主義</em>―― 輝き続ける者だけが上に残る。
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- 参加までの流れ -->
+<section class="reveal">
+  <p class="section-label">How to Join</p>
+  <h2 class="section-title">参加までの<em>流れ</em></h2>
+  <p class="section-body">Discordに入ってから評価デビューまで、4ステップ。</p>
+
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-num">01</div>
+      <p class="step-title">サーバー参加</p>
+      <p class="step-desc">招待リンクからDiscordサーバーに入る</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">02</div>
+      <p class="step-title">規約確認</p>
+      <p class="step-desc">ルールチャンネルを読み、同意リアクションを押す</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">03</div>
+      <p class="step-title">説明会参加</p>
+      <p class="step-desc">定期開催の説明会に出席し、仕組みを把握する</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">04</div>
+      <p class="step-title">評価デビュー</p>
+      <p class="step-desc">候補生としてVCに立ち、声で勝負する</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- ルール・禁止事項 -->
+<section class="reveal">
+  <p class="section-label">Rules</p>
+  <h2 class="section-title">ルール・<em>禁止事項</em></h2>
+  <p class="section-body">STELLAは実力の場。公正な舞台を守るためのルールを必ず守ること。</p>
+
+  <div class="rules-grid">
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>18歳未満の参加禁止</strong>
+        本サーバーは18歳以上限定です。参加後に未成年と判明した場合、キック対象となります。
+      </div>
+    </div>
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>情報漏洩の禁止</strong>
+        ツーショットVC・非公開カテゴリの内容など、サーバー内で知り得た情報の外部持ち出しは禁止です。
+      </div>
+    </div>
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>引き抜き行為の禁止</strong>
+        本サーバーで知り合ったメンバーへの他サーバー勧誘・引き抜きは禁止。DM・通話など手段を問わず双方が違反となります。
+      </div>
+    </div>
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>犯罪行為の禁止</strong>
+        脅迫・詐欺・なりすまし等の犯罪行為は即時キックまたはBANの対象となります。
+      </div>
+    </div>
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>アクティブ低下行為の禁止</strong>
+        故意に場を壊す行為・爆音・過度な煽り・言い合いなど、サーバーの雰囲気を損なう行為は違反です。注意後も改善がない場合はキック・BANとなります。
+      </div>
+    </div>
+    <div class="rule-item bad">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text">
+        <strong>鯖主・管理者への無礼</strong>
+        サーバー設立者である鯖主、および管理者には最低限の敬意を持って接してください。
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-warning" style="margin-top: 1.5rem;">
+    <div class="warn-icon">⚠️</div>
+    <div class="warn-text">
+      違反の度合いによって<em>警告 / キック / BAN</em>の処分が下される。
+      階級・在籍期間は一切考慮されない。
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- FAQ -->
+<section class="reveal">
+  <p class="section-label">FAQ</p>
+  <h2 class="section-title">よくある<em>質問</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">初心者でも参加できますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">もちろん歓迎します。候補生は全員スタートラインが同じです。知名度・経験不問――今この瞬間の実力だけが問われます。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">説明会はどのくらいの頻度で開かれますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">定期的に開催しています。直近の日程はサーバー内の📢お知らせチャンネルをご確認ください。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">評価はどのように行われますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">VCイベントや日常会話を通じて、評価員が声・話術・存在感を審査します。評価員の投票が蓄積されることで階級が変動します。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">階級が下がることはありますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">あります。成績不振やルール違反により降格が発生します。STELLAは完全実力主義のため、現在の階級に関わらず処分が適用されます。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">活動頻度に制限はありますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">強制はしていませんが、長期間の無活動は成績に影響する場合があります。詳細は説明会で確認してください。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">◆</span></div>
+
+<!-- Join -->
+<div class="join-section reveal">
+  <div class="join-bg"></div>
+  <p class="section-label">Join</p>
+  <h2 class="section-title" style="margin: 0 auto 1rem;">舞台は<em>整った</em></h2>
+  <p class="section-body" style="margin: 0 auto 3rem;">
+    あなたの声が、あなたの全てを語る。<br>
+    証明の舞台へ――今すぐ踏み込め。
+  </p>
+  <a href="https://discord.gg/phMRjaQh3" class="join-link" target="_blank">Discord で参加する</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo"><img src="IMG_0667.jpg" alt="STELLA" loading="lazy" style="width:80px;"></div>
+  <div class="footer-note">© 2026 Stella — Evaluation Studio</div>
+</footer>
+
+<script>
+  // ★ 招待リンクはここだけ変えればOK ★
+  const DISCORD_URL = 'https://discord.gg/phMRjaQh3';
+
+  // 全てのDiscordリンクに適用
+  document.querySelectorAll('a[href*="discord.gg"]').forEach(a => a.href = DISCORD_URL);
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+
+  // キーボードでFAQ操作対応
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFaq(btn);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
